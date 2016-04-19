@@ -1,0 +1,771 @@
+{
+    "swagger": "2.0",
+    "schemes": [
+        "https"
+    ],
+    "basePath": "/v1",
+    "host": "apis.cert.vantiv.com",
+    "info": {
+        "version": "1.0.0",
+        "title": "Element EBT",
+        "description": "Element EBT service"
+    },
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/voucher": {
+            "parameters": [],
+            "post": {
+                "tags": [
+                    "Voucher"
+                ],
+                "summary": "EBT Voucher",
+                "description": "EBT Voucher",
+                "operationId": "POST_voucher",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Application": {
+                                    "$ref": "#/definitions/Application"
+                                },
+                                "Transaction": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/definitions/Transaction"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "ApprovalNumber": {
+                                                    "$ref": "#/definitions/ApprovalNumber"
+                                                }
+                                            },
+                                            "required": [
+                                                "ApprovalNumber"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "Terminal": {
+                                    "$ref": "#/definitions/Terminal"
+                                },
+                                "EBT": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/definitions/EBT"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "VoucherNumber": {
+                                                    "$ref": "#/definitions/VoucherNumber"
+                                                }
+                                            },
+                                            "required": [
+                                                "VoucherNumber"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "Card": {
+                                    "$ref": "#/definitions/Card"
+                                }
+                            },
+                            "required": [
+                                "Application",
+                                "Transaction",
+                                "Terminal",
+                                "EBT",
+                                "Card"
+                            ]
+                        }
+                    },
+                    {
+                        "$ref": "#/parameters/trait:contentType:Content-Type"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:authorization:Authorization"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:accept:Accept"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/SuccessfulResponse"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "EBT": {
+                                            "type": "object",
+                                            "properties": {
+                                                "VoucherNumber": {
+                                                    "$ref": "#/definitions/VoucherNumber"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/balanceinquiry": {
+            "parameters": [],
+            "post": {
+                "tags": [
+                    "Balanceinquiry"
+                ],
+                "summary": "EBT Balance Inquiry",
+                "description": "EBT Balance Inquiry",
+                "operationId": "POST_balanceinquiry",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Application": {
+                                    "$ref": "#/definitions/Application"
+                                },
+                                "Transaction": {
+                                    "$ref": "#/definitions/Transaction"
+                                },
+                                "Terminal": {
+                                    "$ref": "#/definitions/Terminal"
+                                },
+                                "EBT": {
+                                    "$ref": "#/definitions/EBT"
+                                },
+                                "Card": {
+                                    "$ref": "#/definitions/Card"
+                                }
+                            },
+                            "required": [
+                                "Application",
+                                "Terminal",
+                                "Transaction",
+                                "EBT",
+                                "Card"
+                            ]
+                        }
+                    },
+                    {
+                        "$ref": "#/parameters/trait:contentType:Content-Type"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:authorization:Authorization"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:accept:Accept"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/SuccessfulResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/credit": {
+            "parameters": [],
+            "post": {
+                "tags": [
+                    "Credit"
+                ],
+                "summary": "EBT Credit",
+                "description": "EBT Credit",
+                "operationId": "POST_credit",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Application": {
+                                    "$ref": "#/definitions/Application"
+                                },
+                                "Transaction": {
+                                    "$ref": "#/definitions/Transaction"
+                                },
+                                "Terminal": {
+                                    "$ref": "#/definitions/Terminal"
+                                },
+                                "EBT": {
+                                    "$ref": "#/definitions/EBT"
+                                },
+                                "Card": {
+                                    "$ref": "#/definitions/Card"
+                                }
+                            },
+                            "required": [
+                                "Application",
+                                "Terminal",
+                                "Transaction",
+                                "EBT",
+                                "Card"
+                            ]
+                        }
+                    },
+                    {
+                        "$ref": "#/parameters/trait:contentType:Content-Type"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:authorization:Authorization"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:accept:Accept"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/SuccessfulResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/sale": {
+            "parameters": [],
+            "post": {
+                "tags": [
+                    "Sale"
+                ],
+                "summary": "EBT Sale",
+                "description": "EBT Sale",
+                "operationId": "POST_sale",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Application": {
+                                    "$ref": "#/definitions/Application"
+                                },
+                                "Transaction": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/definitions/Transaction"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "CashBackAmount": {
+                                                    "$ref": "#/definitions/CashBackAmount"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                "Terminal": {
+                                    "$ref": "#/definitions/Terminal"
+                                },
+                                "EBT": {
+                                    "$ref": "#/definitions/EBT"
+                                },
+                                "Card": {
+                                    "$ref": "#/definitions/Card"
+                                }
+                            },
+                            "required": [
+                                "Application",
+                                "Terminal",
+                                "EBT",
+                                "Card",
+                                "Transaction"
+                            ]
+                        }
+                    },
+                    {
+                        "$ref": "#/parameters/trait:contentType:Content-Type"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:authorization:Authorization"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:accept:Accept"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/SuccessfulResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/reversal": {
+            "parameters": [],
+            "post": {
+                "tags": [
+                    "Reversal"
+                ],
+                "summary": "EBT Reversal",
+                "description": "EBT Credit",
+                "operationId": "POST_reversal",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Application": {
+                                    "$ref": "#/definitions/Application"
+                                },
+                                "Transaction": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/definitions/Transaction"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "ReversalType": {
+                                                    "$ref": "#/definitions/ReversalType"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                "Terminal": {
+                                    "$ref": "#/definitions/Terminal"
+                                },
+                                "EBT": {
+                                    "$ref": "#/definitions/EBT"
+                                },
+                                "Card": {
+                                    "$ref": "#/definitions/Card"
+                                }
+                            },
+                            "required": [
+                                "Application",
+                                "Terminal",
+                                "Transaction",
+                                "EBT",
+                                "Card"
+                            ]
+                        }
+                    },
+                    {
+                        "$ref": "#/parameters/trait:contentType:Content-Type"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:authorization:Authorization"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:accept:Accept"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/SuccessfulResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ApprovalNumber": {
+            "type": "string"
+        },
+        "ReversalType": {
+            "type": "string",
+            "enum": [
+                "System",
+                "Full"
+            ]
+        },
+        "CashBackAmount": {
+            "type": "string"
+        },
+        "VoucherNumber": {
+            "type": "string"
+        },
+        "Application": {
+            "type": "object",
+            "properties": {
+                "ApplicationID": {
+                    "type": "string"
+                },
+                "ApplicationName": {
+                    "type": "string"
+                },
+                "ApplicationVersion": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "ApplicationID",
+                "ApplicationName",
+                "ApplicationVersion"
+            ]
+        },
+        "Transaction": {
+            "type": "object",
+            "properties": {
+                "TransactionAmount": {
+                    "type": "string"
+                },
+                "ClerkNumber": {
+                    "type": "string"
+                },
+                "ShiftID": {
+                    "type": "string"
+                },
+                "SalesTaxAmount": {
+                    "type": "string"
+                },
+                "TipAmount": {
+                    "type": "string"
+                },
+                "ReferenceNumber": {
+                    "type": "string"
+                },
+                "TicketNumber": {
+                    "type": "string"
+                },
+                "MarketCode": {
+                    "type": "string",
+                    "enum": [
+                        "Default",
+                        "AutoRental",
+                        "DirectMarketing",
+                        "ECommerce",
+                        "FoodRestaurant",
+                        "HotelLodging",
+                        "Petroleum",
+                        "Retail",
+                        "QSR"
+                    ]
+                }
+            },
+            "required": [
+                "TransactionAmount",
+                "MarketCode"
+            ]
+        },
+        "Terminal": {
+            "type": "object",
+            "properties": {
+                "TerminalID": {
+                    "type": "string"
+                },
+                "CardPresentCode": {
+                    "type": "string",
+                    "enum": [
+                        "Default",
+                        "Unknown",
+                        "Present",
+                        "NotPresent"
+                    ]
+                },
+                "CardholderPresentCode": {
+                    "type": "string",
+                    "enum": [
+                        "Default",
+                        "Unknown",
+                        "Present",
+                        "NotPresent",
+                        "MailOrder",
+                        "PhoneOrder",
+                        "StandingAuth",
+                        "ECommerce"
+                    ]
+                },
+                "CardInputCode": {
+                    "type": "string",
+                    "enum": [
+                        "Default",
+                        "Unknown",
+                        "MagstripeRead",
+                        "ContactlessMagstripeRead",
+                        "ManualKeyed",
+                        "ManualKeyedMagstripeFailure"
+                    ]
+                },
+                "CVVPresenceCode": {
+                    "type": "string",
+                    "enum": [
+                        "UseDefault",
+                        "NotProvided",
+                        "Provided",
+                        "Illegible",
+                        "CustomerIllegible"
+                    ]
+                },
+                "TerminalCapabilityCode": {
+                    "type": "string",
+                    "enum": [
+                        "Default",
+                        "Unknown",
+                        "NoTerminal",
+                        "MagstripeReader",
+                        "ContactlessMagstripeReader",
+                        "KeyEntered"
+                    ]
+                },
+                "TerminalEnvironmentCode": {
+                    "type": "string",
+                    "enum": [
+                        "Default",
+                        "NoTerminal",
+                        "LocalAttended",
+                        "LocalUnattended",
+                        "RemoteAttended",
+                        "RemoteUnattended",
+                        "ECommerce"
+                    ]
+                },
+                "MotoECICode": {
+                    "type": "string",
+                    "enum": [
+                        "Default",
+                        "NotUsed",
+                        "Single",
+                        "Recurring",
+                        "Installment",
+                        "SecureElectronicCommerce",
+                        "NonAuthenticatedSecureTransaction",
+                        "NonAuthenticatedSecureECommerceTransaction",
+                        "NonSecureECommerceTransaction"
+                    ]
+                },
+                "TerminalEncryptionFormat": {
+                    "type": "string",
+                    "enum": [
+                        "Default",
+                        "Format1",
+                        "Format2",
+                        "Format3",
+                        "Format4"
+                    ]
+                },
+                "TerminalSerialNumber": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "TerminalID",
+                "CardPresentCode",
+                "CardholderPresentCode",
+                "CardInputCode",
+                "TerminalCapabilityCode",
+                "TerminalEnvironmentCode",
+                "MotoECICode",
+                "CVVPresenceCode"
+            ]
+        },
+        "EBT": {
+            "type": "object",
+            "properties": {
+                "EBTTypeIndex": {
+                    "type": "string",
+                    "enum": [
+                        "NotSpecified",
+                        "FoodStamp",
+                        "CashBenefit"
+                    ]
+                }
+            },
+            "required": [
+                "EBTTypeIndex"
+            ]
+        },
+        "Card": {
+            "type": "object",
+            "properties": {
+                "Track2Data": {
+                    "type": "string"
+                },
+                "EncryptedTrack2Data": {
+                    "type": "string"
+                },
+                "EncryptedCardData": {
+                    "type": "string"
+                },
+                "CardDataKeySerialNumber": {
+                    "type": "string"
+                },
+                "EncryptedFormat": {
+                    "type": "string",
+                    "enum": [
+                        "Default",
+                        "Format1",
+                        "Format2",
+                        "Format3",
+                        "Format4"
+                    ]
+                },
+                "CardNumber": {
+                    "type": "string"
+                },
+                "ExpirationMonth": {
+                    "type": "string"
+                },
+                "ExpirationYear": {
+                    "type": "string"
+                },
+                "PINBlock": {
+                    "type": "string"
+                }
+            }
+        },
+        "SuccessfulResponse": {
+            "type": "object",
+            "properties": {
+                "ExpressResponseCode": {
+                    "type": "string"
+                },
+                "ExpressResponseMessage": {
+                    "type": "string"
+                },
+                "ExpressTransactionDate": {
+                    "type": "string"
+                },
+                "ExpressTransactionTime": {
+                    "type": "string"
+                },
+                "ExpressTransactionTimezone": {
+                    "type": "string"
+                },
+                "Batch": {
+                    "type": "object",
+                    "properties": {
+                        "HostBatchID": {
+                            "type": "string"
+                        },
+                        "HostItemID": {
+                            "type": "string"
+                        },
+                        "HostBatchAmount": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "Card": {
+                    "type": "object",
+                    "properties": {
+                        "CardLogo": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "Transaction": {
+                    "type": "object",
+                    "properties": {
+                        "TransactionID": {
+                            "type": "string"
+                        },
+                        "ApprovalNumber": {
+                            "type": "string"
+                        },
+                        "ReferenceNumber": {
+                            "type": "string"
+                        },
+                        "AcquirerData": {
+                            "type": "string"
+                        },
+                        "ProcessorName": {
+                            "type": "string"
+                        },
+                        "TransactionStatus": {
+                            "type": "string"
+                        },
+                        "TransactionStatusCode": {
+                            "type": "string"
+                        },
+                        "ApprovedAmount": {
+                            "type": "string"
+                        },
+                        "BalanceAmount": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "parameters": {
+        "trait:accept:Accept": {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "type": "string"
+        },
+        "trait:authorization:Authorization": {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "type": "string"
+        },
+        "trait:contentType:Content-Type": {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "type": "string"
+        }
+    }
+}
