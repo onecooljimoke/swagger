@@ -3,8 +3,8 @@
   "schemes": [
     "https"
   ],
-  "basePath": "/v1",
-  "host": "apis.cert.vantiv.com",
+  "basePath": "/payment/sp1/services/v1",
+  "host": "apis.dev.vantiv.com",
   "info": {
     "version": "1.0.0",
     "title": "Element Express",
