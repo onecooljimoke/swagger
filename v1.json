@@ -126,6 +126,24 @@
                 "PaymentAccount"
               ]
             }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "type": "string"
           }
         ],
         "responses": {
