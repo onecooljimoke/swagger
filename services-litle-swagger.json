@@ -1,0 +1,269 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "",
+        "title": "Services",
+        "description": ""
+    },
+    "paths": {
+        "/payment/sp2/services/v1/paymentAccountCreate": {
+            "parameters": [],
+            "post": {
+                "summary": "registerTokenRequest",
+                "description": "",
+                "operationId": "POST_payment-sp2-services-v1-paymentAccountCreate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Credentials": {
+                                    "$ref": "#/definitions/credentials"
+                                },
+                                "Application": {
+                                    "$ref": "#/definitions/application"
+                                },
+                                "Reports": {
+                                    "$ref": "#/definitions/reports"
+                                },
+                                "Transaction": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/definitions/transaction"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/reference-number"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Transaction": {
+                                    "type": "object",
+                                    "properties": {
+                                        "TransactionID": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "TransactionID"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/payment/sp2/services/v1/paymentAccountUpdate": {
+            "parameters": [],
+            "post": {
+                "summary": "updateCardValidationNumOnToken",
+                "description": "",
+                "operationId": "POST_payment-sp2-services-v1-paymentAccountUpdate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Credentials": {
+                                    "$ref": "#/definitions/credentials"
+                                },
+                                "Application": {
+                                    "$ref": "#/definitions/application"
+                                },
+                                "Reports": {
+                                    "$ref": "#/definitions/reports"
+                                },
+                                "Transaction": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/definitions/transaction"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/reference-number"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Transaction": {
+                                    "type": "object",
+                                    "properties": {
+                                        "TransasctionID": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/payment/sp2/services/v1/transactionQuery": {
+            "parameters": [],
+            "post": {
+                "summary": "queryTransaction",
+                "description": "",
+                "operationId": "POST_payment-sp2-services-v1-transactionQuery",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Application": {
+                                    "$ref": "#/definitions/application"
+                                },
+                                "Transaction": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/definitions/transaction"
+                                        }
+                                    ]
+                                },
+                                "Reports": {
+                                    "$ref": "#/definitions/reports"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "",
+                        "schema": {}
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "reference-number": {
+            "type": "object",
+            "properties": {
+                "ReferenceNumber": {
+                    "type": "string"
+                }
+            }
+        },
+        "transaction": {
+            "type": "object",
+            "properties": {
+                "CustomerID": {
+                    "type": "string"
+                }
+            }
+        },
+        "reports": {
+            "type": "object",
+            "properties": {
+                "ReportGroup": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "ReportGroup"
+            ]
+        },
+        "application": {
+            "type": "object",
+            "properties": {
+                "ApplicationID": {
+                    "type": "string"
+                }
+            }
+        },
+        "credentials": {
+            "type": "object",
+            "properties": {
+                "AcceptorID": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "AcceptorID"
+            ]
+        }
+    }
+}

@@ -1,0 +1,682 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "",
+        "title": "Litle API",
+        "description": ""
+    },
+    "paths": {
+        "/payment/sp2/credit/v1/captureGivenAuth": {
+            "parameters": [],
+            "post": {
+                "tags": [
+                    "litle/element swagger"
+                ],
+                "summary": "capture",
+                "description": "",
+                "operationId": "POST_payment-sp2-credit-v1-captureGivenAuth",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Credentials": {
+                                    "$ref": "#/definitions/credentials"
+                                },
+                                "Application": {
+                                    "$ref": "#/definitions/application"
+                                },
+                                "Transaction": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/definitions/conveniencefeeamount"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/transaction"
+                                        }
+                                    ]
+                                },
+                                "Reports": {
+                                    "$ref": "#/definitions/reports"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Transaction": {
+                                    "$ref": "#/definitions/response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/payment/sp2/credit/v1/force": {
+            "parameters": [],
+            "post": {
+                "tags": [
+                    "litle/element swagger"
+                ],
+                "summary": "forceCapture",
+                "description": "",
+                "operationId": "POST_payment-sp2-credit-v1-force",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Credentials": {
+                                    "$ref": "#/definitions/credentials"
+                                },
+                                "Application": {
+                                    "$ref": "#/definitions/application"
+                                },
+                                "Reports": {
+                                    "$ref": "#/definitions/reports"
+                                },
+                                "Transaction": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/definitions/transaction"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/referencenumber"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/conveniencefeeamount"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/ordersource"
+                                        }
+                                    ]
+                                },
+                                "Card": {
+                                    "$ref": "#/definitions/card"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Transaction": {
+                                    "$ref": "#/definitions/response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/payment/sp2/credit/v1/authorization/{{transaction id}}/reversal": {
+            "parameters": [],
+            "post": {
+                "summary": "authReversal",
+                "description": "",
+                "operationId": "POST_payment-sp2-credit-v1-authorization-transaction id-reversal",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Credentials": {
+                                    "$ref": "#/definitions/credentials"
+                                },
+                                "Application": {
+                                    "$ref": "#/definitions/application"
+                                },
+                                "Reports": {
+                                    "$ref": "#/definitions/reports"
+                                },
+                                "Transaction": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/definitions/transaction"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/conveniencefeeamount"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Transaction": {
+                                    "$ref": "#/definitions/response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/payment/sp2/credit/v1/authorization": {
+            "parameters": [],
+            "post": {
+                "tags": [
+                    "litle/element swagger"
+                ],
+                "summary": "authorization",
+                "description": "",
+                "operationId": "POST_payment-sp2-credit-v1-authorization",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Credentials": {
+                                    "$ref": "#/definitions/credentials"
+                                },
+                                "Application": {
+                                    "$ref": "#/definitions/application"
+                                },
+                                "Reports": {
+                                    "$ref": "#/definitions/reports"
+                                },
+                                "Transaction": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/definitions/transaction"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/referencenumber"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/conveniencefeeamount"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/ordersource"
+                                        }
+                                    ]
+                                },
+                                "Card": {
+                                    "$ref": "#/definitions/card"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Transaction": {
+                                    "$ref": "#/definitions/response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/payment/sp2/credit/v1/sale": {
+            "parameters": [],
+            "post": {
+                "tags": [
+                    "litle/element swagger"
+                ],
+                "summary": "sale",
+                "description": "",
+                "operationId": "POST_payment-sp2-credit-v1-sale",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Credentials": {
+                                    "$ref": "#/definitions/credentials"
+                                },
+                                "Application": {
+                                    "$ref": "#/definitions/application"
+                                },
+                                "Reports": {
+                                    "$ref": "#/definitions/reports"
+                                },
+                                "Transaction": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/definitions/transaction"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/referencenumber"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/conveniencefeeamount"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/ordersource"
+                                        }
+                                    ]
+                                },
+                                "Card": {
+                                    "$ref": "#/definitions/card"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Transaction": {
+                                    "$ref": "#/definitions/response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/payment/sp2/credit/v1//sale/{{transaction id}}/void": {
+            "parameters": [],
+            "post": {
+                "summary": "void",
+                "description": "",
+                "operationId": "POST_payment-sp2-credit-v1--sale-transaction id-void",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Credentials": {
+                                    "$ref": "#/definitions/credentials"
+                                },
+                                "Application": {
+                                    "$ref": "#/definitions/application"
+                                },
+                                "Reports": {
+                                    "$ref": "#/definitions/reports"
+                                },
+                                "Transaction": {
+                                    "$ref": "#/definitions/transaction"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Transaction": {
+                                    "$ref": "#/definitions/response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/payment/sp2/credit/v1/credit": {
+            "parameters": [],
+            "post": {
+                "tags": [
+                    "litle/element swagger"
+                ],
+                "summary": "credit",
+                "description": "",
+                "operationId": "POST_payment-sp2-credit-v1-credit",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Credentials": {
+                                    "$ref": "#/definitions/credentials"
+                                },
+                                "Application": {
+                                    "$ref": "#/definitions/application"
+                                },
+                                "Reports": {
+                                    "$ref": "#/definitions/reports"
+                                },
+                                "Transaction": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/definitions/transaction"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/referencenumber"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/conveniencefeeamount"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/ordersource"
+                                        }
+                                    ]
+                                },
+                                "Card": {
+                                    "$ref": "#/definitions/card"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Transaction": {
+                                    "$ref": "#/definitions/response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "application": {
+            "type": "object",
+            "properties": {
+                "ApplicationID": {
+                    "type": "string"
+                }
+            }
+        },
+        "ordersource": {
+            "type": "object",
+            "properties": {
+                "OrderSource": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "OrderSource"
+            ]
+        },
+        "conveniencefeeamount": {
+            "type": "object",
+            "properties": {
+                "ConvenienceFeeAmount": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "ConvenienceFeeAmount"
+            ]
+        },
+        "referencenumber": {
+            "type": "object",
+            "properties": {
+                "ReferenceNumber": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "ReferenceNumber"
+            ]
+        },
+        "reports": {
+            "type": "object",
+            "properties": {
+                "ReportGroup": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "ReportGroup"
+            ]
+        },
+        "credentials": {
+            "type": "object",
+            "properties": {
+                "AcceptorID": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "AcceptorID"
+            ]
+        },
+        "transaction": {
+            "type": "object",
+            "properties": {
+                "CustomerID": {
+                    "type": "string"
+                }
+            }
+        },
+        "card": {
+            "type": "object",
+            "properties": {
+                "Type": {
+                    "type": "string"
+                },
+                "CardNumber": {
+                    "type": "string"
+                },
+                "CVV": {
+                    "type": "string"
+                },
+                "ExpirationMonth": {
+                    "type": "string"
+                },
+                "ExpirationYear": {
+                    "type": "string"
+                },
+                "Track1Data": {
+                    "type": "string"
+                },
+                "Track2Data": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Type",
+                "Track1Data",
+                "Track2Data"
+            ]
+        },
+        "response": {
+            "type": "object",
+            "properties": {
+                "TransactionID": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "TransactionID"
+            ]
+        }
+    },
+    "parameters": {
+        "trait:headers:Content-Type": {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "type": "string"
+        },
+        "trait:headers:Authorization": {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "type": "string"
+        }
+    }
+}

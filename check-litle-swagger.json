@@ -1,0 +1,465 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "",
+        "title": "Check Litle",
+        "description": ""
+    },
+    "paths": {
+        "/payment/sp2/check/v1/credit": {
+            "parameters": [],
+            "post": {
+                "tags": [
+                    "eCheck "
+                ],
+                "summary": "eCheckCredit",
+                "description": "",
+                "operationId": "POST_payment-sp2-check-v1-credit",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Credentials": {
+                                    "$ref": "#/definitions/credentials"
+                                },
+                                "Application": {
+                                    "$ref": "#/definitions/application"
+                                },
+                                "Reports": {
+                                    "$ref": "#/definitions/reports"
+                                },
+                                "Transaction": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/definitions/transaction"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/reference-number"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/convenience-fee-amount"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/order-source"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/parameters/trait:headers:Content-Type"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:headers:Authorization"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Transaction": {
+                                    "$ref": "#/definitions/echeck-litle-response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/payment/sp2/check/v1/verification": {
+            "parameters": [],
+            "post": {
+                "tags": [
+                    "eCheck "
+                ],
+                "summary": "eCheckVerification",
+                "description": "",
+                "operationId": "POST_payment-sp2-check-v1-verification",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Credentials": {
+                                    "$ref": "#/definitions/credentials"
+                                },
+                                "Application": {
+                                    "$ref": "#/definitions/application"
+                                },
+                                "Reports": {
+                                    "$ref": "#/definitions/reports"
+                                },
+                                "Transaction": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/definitions/reference-number"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/convenience-fee-amount"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/order-source"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Transaction": {
+                                    "$ref": "#/definitions/echeck-litle-response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/payment/sp2/check/v1/sale": {
+            "parameters": [],
+            "post": {
+                "tags": [
+                    "eCheck "
+                ],
+                "summary": "eCheckSale",
+                "description": "",
+                "operationId": "POST_payment-sp2-check-v1-sale",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Credentials": {
+                                    "$ref": "#/definitions/credentials"
+                                },
+                                "Application": {
+                                    "$ref": "#/definitions/application"
+                                },
+                                "Reports": {
+                                    "$ref": "#/definitions/reports"
+                                },
+                                "Transaction": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/definitions/transaction"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/reference-number"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/convenience-fee-amount"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/order-source"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Transaction": {
+                                    "$ref": "#/definitions/echeck-litle-response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/payment/sp2/check/v1/void": {
+            "parameters": [],
+            "post": {
+                "tags": [
+                    "eCheck "
+                ],
+                "summary": "eCheckVoid",
+                "description": "",
+                "operationId": "POST_payment-sp2-check-v1-void",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Credentials": {
+                                    "$ref": "#/definitions/credentials"
+                                },
+                                "Application": {
+                                    "$ref": "#/definitions/application"
+                                },
+                                "Reports": {
+                                    "$ref": "#/definitions/reports"
+                                },
+                                "Transaction": {
+                                    "$ref": "#/definitions/transaction"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Transaction": {
+                                    "$ref": "#/definitions/echeck-litle-response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/payment/sp2/check/v1/echeckRedeposit": {
+            "parameters": [],
+            "post": {
+                "tags": [
+                    "eCheck "
+                ],
+                "summary": "eCheckRedeposit",
+                "description": "",
+                "operationId": "POST_payment-sp2-check-v1-echeckRedeposit",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Credentials": {
+                                    "$ref": "#/definitions/credentials"
+                                },
+                                "Application": {
+                                    "$ref": "#/definitions/application"
+                                },
+                                "Reports": {
+                                    "$ref": "#/definitions/reports"
+                                },
+                                "Transaction": {
+                                    "$ref": "#/definitions/transaction"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/parameters/trait:headers:Content-Type"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:headers:Authorization"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Transaction": {
+                                    "$ref": "#/definitions/echeck-litle-response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "order-source": {
+            "type": "object",
+            "properties": {
+                "OrderSource": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "OrderSource"
+            ]
+        },
+        "convenience-fee-amount": {
+            "type": "object",
+            "properties": {
+                "ConvenienceFeeAmount": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "ConvenienceFeeAmount"
+            ]
+        },
+        "reference-number": {
+            "type": "object",
+            "properties": {
+                "ReferenceNumber": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "ReferenceNumber"
+            ]
+        },
+        "credentials": {
+            "type": "object",
+            "properties": {
+                "AcceptorID": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "AcceptorID"
+            ]
+        },
+        "echeck-litle-response": {
+            "type": "object",
+            "properties": {
+                "TransactionID": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "TransactionID"
+            ]
+        },
+        "transaction": {
+            "type": "object",
+            "properties": {
+                "CustomerID": {
+                    "type": "string"
+                }
+            }
+        },
+        "reports": {
+            "type": "object",
+            "properties": {
+                "ReportGroup": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "ReportGroup"
+            ]
+        },
+        "application": {
+            "type": "object",
+            "properties": {
+                "ApplicationID": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "parameters": {
+        "trait:headers:Content-Type": {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "type": "string"
+        },
+        "trait:headers:Authorization": {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "type": "string"
+        }
+    }
+}

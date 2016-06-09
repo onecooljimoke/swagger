@@ -1,0 +1,500 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "",
+        "title": "Gift Litle",
+        "description": ""
+    },
+    "paths": {
+        "/payment/sp2/gift/v1/balanceInquiry": {
+            "parameters": [],
+            "post": {
+                "tags": [
+                    "Gift"
+                ],
+                "summary": "balanceInquiry",
+                "description": "",
+                "operationId": "POST_payment-sp2-gift-v1-balanceInquiry",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Credentials": {
+                                    "$ref": "#/definitions/credentials"
+                                },
+                                "Application": {
+                                    "$ref": "#/definitions/application"
+                                },
+                                "Reports": {
+                                    "$ref": "#/definitions/reports"
+                                },
+                                "Transaction": {
+                                    "$ref": "#/definitions/transaction"
+                                },
+                                "Card": {
+                                    "$ref": "#/definitions/card"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Transaction": {
+                                    "$ref": "#/definitions/transaction-response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/payment/sp2/gift/v1/deactivate": {
+            "parameters": [],
+            "post": {
+                "tags": [
+                    "Gift"
+                ],
+                "summary": "deactivate",
+                "description": "",
+                "operationId": "POST_payment-sp2-gift-v1-deactivate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Credentials": {
+                                    "$ref": "#/definitions/credentials"
+                                },
+                                "Application": {
+                                    "$ref": "#/definitions/application"
+                                },
+                                "Reports": {
+                                    "$ref": "#/definitions/reports"
+                                },
+                                "Transaction": {
+                                    "$ref": "#/definitions/transaction"
+                                },
+                                "Card": {
+                                    "$ref": "#/definitions/card"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Transaction": {
+                                    "$ref": "#/definitions/transaction-response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/payment/sp2/gift/v1/activate": {
+            "parameters": [],
+            "post": {
+                "tags": [
+                    "Gift"
+                ],
+                "summary": "activate",
+                "description": "",
+                "operationId": "POST_payment-sp2-gift-v1-activate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Credentials": {
+                                    "$ref": "#/definitions/credentials"
+                                },
+                                "Reports": {
+                                    "$ref": "#/definitions/reports"
+                                },
+                                "Application": {
+                                    "$ref": "#/definitions/application"
+                                },
+                                "Transaction": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/definitions/transaction"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/conveniencefeeamount"
+                                        }
+                                    ]
+                                },
+                                "Card": {
+                                    "$ref": "#/definitions/card"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Transaction": {
+                                    "$ref": "#/definitions/transaction-response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/payment/sp2/gift/v1/load": {
+            "parameters": [],
+            "post": {
+                "tags": [
+                    "Gift"
+                ],
+                "summary": "load",
+                "description": "",
+                "operationId": "POST_payment-sp2-gift-v1-load",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Credentials": {
+                                    "$ref": "#/definitions/credentials"
+                                },
+                                "Transaction": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/definitions/transaction"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/conveniencefeeamount"
+                                        }
+                                    ]
+                                },
+                                "Application": {
+                                    "$ref": "#/definitions/application"
+                                },
+                                "Reports": {
+                                    "$ref": "#/definitions/reports"
+                                },
+                                "Card": {
+                                    "$ref": "#/definitions/card"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Transaction": {
+                                    "$ref": "#/definitions/transaction-response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/payment/sp2/gift/v1/unload": {
+            "parameters": [],
+            "post": {
+                "tags": [
+                    "Gift"
+                ],
+                "summary": "unload",
+                "description": "",
+                "operationId": "POST_payment-sp2-gift-v1-unload",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Credentials": {
+                                    "$ref": "#/definitions/credentials"
+                                },
+                                "Transaction": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/definitions/transaction"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/conveniencefeeamount"
+                                        }
+                                    ]
+                                },
+                                "Application": {
+                                    "$ref": "#/definitions/application"
+                                },
+                                "Reports": {
+                                    "$ref": "#/definitions/reports"
+                                },
+                                "Card": {
+                                    "$ref": "#/definitions/card"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Transaction": {
+                                    "$ref": "#/definitions/transaction-response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "application": {
+            "type": "object",
+            "properties": {
+                "ApplicationID": {
+                    "type": "string"
+                }
+            }
+        },
+        "reports": {
+            "type": "object",
+            "properties": {
+                "ReportGroup": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "ReportGroup"
+            ]
+        },
+        "conveniencefeeamount": {
+            "type": "object",
+            "properties": {
+                "ConvenienceFeeAmount": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "ConvenienceFeeAmount"
+            ]
+        },
+        "card": {
+            "type": "object",
+            "properties": {
+                "Type": {
+                    "type": "string"
+                },
+                "CardNumber": {
+                    "type": "string"
+                },
+                "ExpirationMonth": {
+                    "type": "string"
+                },
+                "ExpirationYear": {
+                    "type": "string"
+                },
+                "Track1Data": {
+                    "type": "string"
+                },
+                "Track2Data": {
+                    "type": "string"
+                },
+                "CVV": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Type",
+                "Track1Data",
+                "Track2Data"
+            ]
+        },
+        "transaction-response": {
+            "type": "object",
+            "properties": {
+                "TransactionID": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "TransactionID"
+            ]
+        },
+        "transaction": {
+            "type": "object",
+            "properties": {
+                "CustomerID": {
+                    "type": "string"
+                },
+                "ReferenceNumber": {
+                    "type": "string"
+                },
+                "OrderSource": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "ReferenceNumber",
+                "OrderSource"
+            ]
+        },
+        "credentials": {
+            "type": "object",
+            "properties": {
+                "AcceptorID": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "AcceptorID"
+            ]
+        }
+    },
+    "parameters": {
+        "trait:headers:Content-Type": {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "type": "string"
+        },
+        "trait:headers:Authorization": {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "type": "string"
+        }
+    }
+}
